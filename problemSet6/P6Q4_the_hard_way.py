@@ -37,6 +37,7 @@ def counter(array, var):#counts instances of given value
     for i in range(0, len(array)):
         if (array[i] == var):
             count = count + 1
+    print (count)
     return count
 
 def reverse(array):#flips the array
@@ -53,6 +54,7 @@ def index(array, val):#returns the place in the list where val is first incounte
     for i in range (0, len(array)):
         if (array[i] == val):
             return i
+    
 
 def insert(array, val, loc):
     """
@@ -73,29 +75,69 @@ insert users val into desired location
     print (array)
 
 def menu():
-    print ("Step 1".center(20, "-"))
-    print ("1. Create your own array")
-    print ("2. Use the premade array")
+    array = ["job", "string", "batman","book", "book","book", "book", "knife", "superman", "keyboard", "keys", "door", "wall", "paper"]
+    print ("your unformatted array looks like this:", array)
+    print ("")
+    print ("")
+    print ("""Would you like to:
+                CODE    DESCRIPTION
+                1----   print the array
+                2----   count the number of times your value is listed
+                3----   reverse the array
+                4----   look for the first instance of a disired value
+                5----   insert a value into a specific spot in the array""")
+    
+    #then add if statments!
+    done = False
+    while (done == False):
+        cod = input("enter code here ---->")
+        if (cod == "1"):
+            printer(array)
+           
+        elif (cod == "2"):
+            word = input("Enter a string you want to count:")
+            counter(array, word)
+            
+        elif (cod == "3"):
+            reverse(array)
+            
+        elif (cod == "4"):
+            word = input("Enter a string you want to index:")
+            print (index(array, word))
+           
+        elif (cod == "5"):
+            word = input("Enter a string you want to insert:")
+            try:
+                num = int(input("Please enter the location you want to insert your string"))
+            except:
+                print ("You gave bad input Please try again")
+                return False
+            insert(array, word, num)
+            
 
-    val = input("enter the option code here ----->")
-    val = val.strip()
+        keep = input("enter \"y\" to continue... anything else to exit")
+        if (keep == "y") or (keep == "Y"):
+            done = False
+        else:
+            done = True
 
-    if (val != "1") and (val != "2"):
-        print ("You donut! Only enter \"1\" or \"2\"")
-        print ("")
-        print ("Please try again...".upper())
-        print ("")
-        return False#will try again
+        #then check if this is all the user wants to do. if it is then done = true
+        #and they we can return true on this whole function and get out of here
+    return True
+    
+    
     
     
 job = False
 while (job == False):
     job = menu()
     
-menu()
+
+"""
 array = ["job", "string", "book", "book","book", "book", "knife", "superman", "keyboard", "keys", "door", "wall", "paper"]
 printer(array)
 print(counter(array, "book"))
 reverse(array)
 print(index(array, "book"))
 insert(array, "james bond" ,4)
+"""
