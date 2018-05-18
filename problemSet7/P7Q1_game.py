@@ -116,7 +116,7 @@ def main():
     #print (player1)
     #print (sword1)
     #print ("hello world!")
-    will = make_from_file("William Doyle.txt")
+    will = make_from_file("William.txt")
     print (will)
 
 
